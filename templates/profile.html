@@ -5,7 +5,7 @@
         <strong>Профиль пользователя: {{profile_page}}</strong>
         <br>
         {% if profile_page == user %}
-        <form action="{{ url_for('logOut')}}" method="post">
+        <form action="{{ url_for('log_out')}}" method="post">
             <button type="submit">Выйти</button>
         </form>
         {% endif %}

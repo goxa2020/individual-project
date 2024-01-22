@@ -9,7 +9,6 @@ def login_form():
     email = request.form['email']
     password = request.form['psw']
     if 'userLogged' in session:
-        # return redirect(url_for('/', username=session['userLogged']))
         return redirect(session['userLogged'])
     if email == 'goxa' and password == '123':
         session['userLogged'] = email
@@ -28,8 +27,8 @@ def register_form():
     return render_template('register.html', title='Регистрация', user=user)
 
 
-@app.route('/logOut', methods=['POST'])
-def logOut():
+@app.route('/log_out', methods=['POST'])
+def log_out():
     del session['userLogged']
     return redirect('/')
 
@@ -56,8 +55,8 @@ def login():
 
 @app.route('/<path:profile_page>')
 def profile(profile_page):
-    if profile_page in ['goxa', '555', 'qwerty']:
-        user = session.get('userLogged')
+    user = session.get('userLogged')
+    if profile_page in ['goxa', '555', 'qwerty'] or user == profile_page:
         return render_template('profile.html', profile_page=profile_page, user=user, title=profile_page)
     return abort(404)
 
