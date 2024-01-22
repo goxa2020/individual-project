@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+{{ super() }}
+    <div>
+        <strong>Профиль пользователя: {{profile_page}}</strong>
+        <br>
+        {% if profile_page == user %}
+        <form action="{{ url_for('logOut')}}" method="post">
+            <button type="submit">Выйти</button>
+        </form>
+        {% endif %}
+    </div>
+{% endblock %}

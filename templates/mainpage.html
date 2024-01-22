@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+{% endblock%}
+{% block content %}
+{{ super() }}
+    <main>
+        <h1>Это очень крутой сайт</h1>
+        {% if user %}
+        <p>Вы авторизованы</p>
+        {% endif %}
+    </main>
+    <footer>
+        <p>ДА</p>
+    </footer>
+{% endblock %}

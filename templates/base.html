@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% block head%}
+    {% if title %}
+            <title>ПРОЕКТ - {{title}}</title>
+    {% else %}
+            <title>ПРОЕКТ</title>
+    {% endif %}
+    <meta charset="UTF-8">
+    {% endblock%}
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">ПРОЕКТ</a>
+            <p>Меню</p>
+            {% if user %}
+            <a href="{{ user }}">{{ user }}</a>
+            {% else %}
+            <a href="register">Зарегистрироваться</a>
+            <a href="login">Войти</a>
+<!--            <button formaction="{{ url_for('login_form') }}">Выйти</button>-->
+            {% endif %}
+        </nav>
+    </header>
+    <hr>
+    {% block content -%}
+    {% endblock -%}
+    <footer>
+        <p>Это футер</p>
+    </footer>
+</body>
+</html>
