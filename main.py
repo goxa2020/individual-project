@@ -12,7 +12,7 @@ def login_form():
         return redirect(session['userLogged'])
     if email == 'goxa' and password == '123':
         session['userLogged'] = email
-        return redirect(session['userLogged'])
+        return redirect(email)
     flash('Аккаунт не найден')
     return render_template('login.html', title='Авторизация')
 
@@ -39,6 +39,7 @@ def index():
     return render_template('mainpage.html', user=user)
 
 
+@app.route('/registration')
 @app.route('/register')
 def register():
     if 'userLogged' in session:
@@ -53,7 +54,7 @@ def login():
     return render_template('login.html', title='Авторизация')
 
 
-@app.route('/<path:profile_page>')
+@app.route('/<profile_page>')
 def profile(profile_page):
     user = session.get('userLogged')
     if profile_page in ['goxa', '555', 'qwerty'] or user == profile_page:

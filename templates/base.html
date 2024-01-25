@@ -1,38 +1,38 @@
 <!DOCTYPE html>
 <html lang="ru">
-<head>
-    {% block head%}
-    {% if title %}
-            <title>ПРОЕКТ - {{title}}</title>
-    {% else %}
-            <title>ПРОЕКТ</title>
-    {% endif %}
-    <meta charset="UTF-8">
-    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/main_favicons/apple-touch-icon.png') }}">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/main_favicons/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/main_favicons/favicon-16x16.png') }}">
-    <link rel="manifest" href="{{ url_for('static', filename='icons/main_favicons/site.webmanifest') }}">
-    {% endblock%}
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="/">ПРОЕКТ</a>
-            <p>Меню</p>
-            {% if user %}
-            <a href="{{ user }}">{{ user }}</a>
-            {% else %}
-            <a href="register">Зарегистрироваться</a>
-            <a href="login">Войти</a>
-<!--            <button formaction="{{ url_for('login_form') }}">Выйти</button>-->
-            {% endif %}
-        </nav>
-    </header>
-    <hr>
-    {% block content -%}
-    {% endblock -%}
-    <footer>
-        <p>Это футер</p>
-    </footer>
-</body>
+    <head>
+        {% block head%}
+        {% if title %}
+        <title>ПРОЕКТ - {{title}}</title>
+        {% else %}
+        <title>ПРОЕКТ</title>
+        {% endif %}
+        <meta charset="UTF-8">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static', filename='icons/main_favicons/apple-touch-icon.png') }}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='icons/main_favicons/favicon-32x32.png') }}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='icons/main_favicons/favicon-16x16.png') }}">
+        <link rel="manifest" href="{{ url_for('static', filename='icons/main_favicons/site.webmanifest') }}">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+        {% endblock%}
+    </head>
+    <body>
+        <header>
+            <nav>
+                <a href="/">ПРОЕКТ</a>
+                <p>Меню</p>
+                {% if user %}
+                <a href="/{{ user }}">{{ user }}</a>
+                {% else %}
+                <a href="/register">Зарегистрироваться</a>
+                <a href="/login">Войти</a>
+                {% endif %}
+            </nav>
+        </header>
+        <hr>
+        {% block content -%}
+        {% endblock -%}
+        <footer>
+            <p>Это футер</p>
+        </footer>
+    </body>
 </html>
