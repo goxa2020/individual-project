@@ -5,28 +5,27 @@
 {% endblock %}
 {% block content %}
 {{ super() }}
-    <form action="{{ url_for('login_form') }}" method="POST">
-        <div class="container">
-            <h1>Вход</h1>
-            <p>Пожалуйста, заполните эту форму, чтобы войти в свою учетную запись.</p>
-            <hr>
+<div class="text-center center">
+    <form class="form-signin" action="{{ url_for('login_form') }}" method="POST">
+        <h1 class="h2 mb-5 font-weight-normal">Пожалуйста войдите</h1>
 
-            <label><b>Email</b></label>
-            <input type="text" name="email" placeholder="Email" required>
-            <br>
+        <label for="inputEmail" class="sr-only">Email</label>
+        <input type="email" id="inputEmail" name="email" class="form-control mb-2" placeholder="Email" required="" autofocus="">
 
-            <label><b>Пароль</b></label>
-            <input type="password" placeholder="Пароль" name="psw" required>
-            <br>
+        <label for="inputPassword" class="sr-only">Пароль</label>
+        <input type="password" id="inputPassword" name="psw" class="form-control mb-5" placeholder="Пароль" required="">
 
-            <button type="submit" class="login-btn">Войти</button>
+        <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Войти</button>
 
-            <div class="flash">
-                {% for msg in get_flashed_messages() %}
-                <h3 style="color: crimson; text-align: center">{{msg}}</h3>
-                {% endfor %}
-            </div>
-
+        <div class="center text-center flash">
+            {% for msg in get_flashed_messages() %}
+            <h3 style="color: crimson; text-align: center">{{msg}}</h3>
+            {% endfor %}
         </div>
+
+        <p class="text-center">Ещё нет аккаунта? <a href="/register">Зарегестрируйтесь!</a> </p>
+
     </form>
+</div>
+
 {% endblock %}

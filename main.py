@@ -10,7 +10,7 @@ def login_form():
     password = request.form['psw']
     if 'userLogged' in session:
         return redirect(session['userLogged'])
-    if email == 'goxa' and password == '123':
+    if email == 'goxa@com' and password == '123':
         session['userLogged'] = email
         return redirect(email)
     flash('Аккаунт не найден')
@@ -52,6 +52,12 @@ def login():
     if 'userLogged' in session:
         return redirect(session['userLogged'])
     return render_template('login.html', title='Авторизация')
+
+
+@app.route('/about')
+def about():
+    user = session.get('userLogged')
+    return render_template('about.html', title='О нас', user=user, about_active='active')
 
 
 @app.route('/<profile_page>')
