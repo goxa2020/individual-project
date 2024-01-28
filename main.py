@@ -1,7 +1,8 @@
 from flask import Flask, render_template, request, redirect, flash, session, abort
+from werkzeug.exceptions import NotFound
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'Даня_писька'
+app.config['SECRET_KEY'] = 'Даня_крутой'
 
 
 @app.route('/login', methods=['POST'])
@@ -65,13 +66,15 @@ def profile(profile_page):
     user = session.get('userLogged')
     if profile_page in ['goxa', '555', 'qwerty'] or user == profile_page:
         return render_template('profile.html', profile_page=profile_page, user=user, title=profile_page)
-    return abort(404)
+    return abort(404, profile_page)
 
 
 @app.errorhandler(404)
-def not_found(error):
+def not_found(error: NotFound):
+    page = error.description
+    page = (page if len(page) <= 20 else '')
     user = session.get('userLogged')
-    return render_template('not_found.html', title='Страница не найдена', user=user), 404
+    return render_template('not_found.html', title='Страница не найдена', user=user, page=page), 404
 
 
 if __name__ == '__main__':

@@ -2,29 +2,37 @@
 {% block head %}
 {{ super() }}
     <link rel="stylesheet" href="{{ url_for('static', filename='css/login.css') }}">
+    <script defer src="{{ url_for('static', filename='js/validation_form.js')}}"></script>
 {% endblock %}
 {% block content %}
 {{ super() }}
 <div class="text-center center">
-    <form class="form-signin" action="{{ url_for('login_form') }}" method="POST">
-        <h1 class="h2 mb-5 font-weight-normal">Пожалуйста войдите</h1>
+    <form class="row needs-validation" action="{{ url_for('login_form') }}" method="POST" novalidate>
+        <div class="col-12">
+            <h1 class="h2 mb-5 font-weight-normal">Пожалуйста войдите</h1>
 
-        <label for="inputEmail" class="sr-only">Email</label>
-        <input type="email" id="inputEmail" name="email" class="form-control mb-2" placeholder="Email" required="" autofocus="">
+            <div class="mb-2">
+                <label for="inputEmail" class="form-label sr-only">Email</label>
+                <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Email" required="" autofocus="">
+                <div class="invalid-feedback">Требуется корректный email</div>
+            </div>
 
-        <label for="inputPassword" class="sr-only">Пароль</label>
-        <input type="password" id="inputPassword" name="psw" class="form-control mb-5" placeholder="Пароль" required="">
+            <div class="mb-5">
+                <label for="inputPassword" class="sr-only">Пароль</label>
+                <input type="password" id="inputPassword" name="psw" class="form-control mb-2" placeholder="Пароль" required="">
+                <div class="invalid-feedback">Введите пароль</div>
+            </div>
 
-        <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Войти</button>
+            <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Войти</button>
 
-        <div class="center text-center flash">
-            {% for msg in get_flashed_messages() %}
-            <h3 style="color: crimson; text-align: center">{{msg}}</h3>
-            {% endfor %}
+            <div class="text-center flash-login-center">
+                {% for msg in get_flashed_messages() %}
+                <h3 class="flash-message">{{msg}}</h3>
+                {% endfor %}
+            </div>
+
+            <p class="text-center">Ещё нет аккаунта? <a href="/register">Зарегестрируйтесь!</a> </p>
         </div>
-
-        <p class="text-center">Ещё нет аккаунта? <a href="/register">Зарегестрируйтесь!</a> </p>
-
     </form>
 </div>
 

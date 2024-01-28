@@ -1,43 +1,80 @@
 {% extends 'base.html' %}
+{% block head %}
+{{ super() }}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/register.css') }}">
+    <script defer src="{{ url_for('static', filename='js/validation_form.js')}}"></script>
+{% endblock %}
 {% block content %}
 {{ super() }}
 
-<form action="{{ url_for('register_form') }}" method="post">
-    <div class="container">
-        <h1>Регистрация</h1>
-        <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
-        <hr>
+<div class="text-center center">
+    <form class="form-signin needs-validation" action="{{ url_for('register_form') }}" method="POST">
+        <h1 class="h2 mb-5 font-weight-normal">Регистрация</h1>
 
-        <label><b>Email</b></label>
-        <input type="text" placeholder="Email" name="email" required>
-        <br>
+        <p class="text-center">Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>
 
-        <label><b>Ваш ник</b></label>
-        <input type="text" placeholder="Придумайте ник" name="nick" required>
-        <br>
+        <label for="inputEmail" class="sr-only"></label>
+        <input type="email" id="inputEmail" name="email" class="form-control mb-2" placeholder="Email" required="" autofocus="">
 
-        <label><b>Пароль</b></label>
-        <input type="password" placeholder="Пароль" name="psw" required>
-        <br>
+        <label for="inputNick" class="sr-only"></label>
+        <input type="text" id="inputNick" name="nick" class="form-control mb-2" placeholder="Придумайте ник" required="">
 
-        <label><b>Повторите пароль</b></label>
-        <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>
+        <label for="inputPassword" class="sr-only"></label>
+        <input type="password" id="inputPassword" name="psw" class="form-control mb-2" placeholder="Пароль" required="">
 
-        <div class="flash">
+        <label for="inputPasswordRepeat" class="sr-only"></label>
+        <input type="password" id="inputPasswordRepeat" name="psw-repeat" class="form-control mb-5" placeholder="Повторите пароль" required="">
+
+        <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Зарегистрироваться</button>
+
+        <div class="text-center flash-reg-center">
             {% for msg in get_flashed_messages() %}
-            <h3 style="color: crimson; text-align: center">{{msg}}</h3>
+            <h3 class="flash-message">{{msg}}</h3>
             {% endfor %}
         </div>
 
-        <hr>
+        <p class="text-center">Уже есть аккаунт? <a href="/login">Войдите!</a> </p>
 
-        <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#">Условия и конфиденциальность</a>.</p>
-        <button type="submit" class="registerbtn">Зарегистрироваться</button>
-    </div>
+    </form>
+</div>
 
-    <div class="container signin">
-        <p>Уже есть аккаунт? <a href="login">Войти</a>.</p>
-    </div>
-</form>
+
+<!--<form action="{{ url_for('register_form') }}" method="post">-->
+<!--    <div class="container">-->
+<!--        <h1>Регистрация</h1>-->
+<!--        <p>Пожалуйста, заполните эту форму, чтобы создать учетную запись.</p>-->
+<!--        <hr>-->
+
+<!--        <label><b>Email</b></label>-->
+<!--        <input type="text" placeholder="Email" name="email" required>-->
+<!--        <br>-->
+
+<!--        <label><b>Ваш ник</b></label>-->
+<!--        <input type="text" placeholder="Придумайте ник" name="nick" required>-->
+<!--        <br>-->
+
+<!--        <label><b>Пароль</b></label>-->
+<!--        <input type="password" placeholder="Пароль" name="psw" required>-->
+<!--        <br>-->
+
+<!--        <label><b>Повторите пароль</b></label>-->
+<!--        <input type="password" placeholder="Повторите пароль" name="psw-repeat" required>-->
+
+<!--        <div class="flash">-->
+<!--            {% for msg in get_flashed_messages() %}-->
+<!--            <h3 style="color: crimson; text-align: center">{{msg}}</h3>-->
+<!--            {% endfor %}-->
+<!--        </div>-->
+
+<!--        <hr>-->
+
+<!--        <p>Создавая учетную запись, вы соглашаетесь с нашими <a href="#">Условия и конфиденциальность</a>.</p>-->
+<!--        <button type="submit" class="registerbtn">Зарегистрироваться</button>-->
+<!--    </div>-->
+
+<!--    <div class="container signin">-->
+<!--        <p>Уже есть аккаунт? <a href="login">Войти</a>.</p>-->
+<!--    </div>-->
+<!--</form>-->
 
 {% endblock %}
