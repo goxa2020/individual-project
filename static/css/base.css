@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Lato|Raleway');
+@import url('https://fonts.googleapis.com/css?family=Nunito|Raleway');
 
 * {
     margin: 0;
@@ -7,12 +7,12 @@
 
 body {
     background-color: #f2f2f2;
-    font-family: "Lato", serif;
+    font-family: "Nunito", serif;
     font-size: 16px;
-    color: #555;
+    color: #1e1e1e;
 
+    font-smooth: auto;
     -webkit-font-smoothing: antialiased;
-    -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -42,6 +42,10 @@ p {
 }
 
 .flash-message {
-    color: crimson;
+    color: var(--bs-red);
     text-align: center;
+}
+
+.red {
+    color: red;
 }

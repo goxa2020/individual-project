@@ -28,9 +28,10 @@ def register_form():
     return render_template('register.html', title='Регистрация', user=user)
 
 
-@app.route('/log_out', methods=['POST'])
+@app.route('/log_out', methods=['GET', 'POST'])
 def log_out():
-    del session['userLogged']
+    if session['userLogged']:
+        del session['userLogged']
     return redirect('/')
 
 

@@ -17,19 +17,19 @@
                 <div class="invalid-feedback">Требуется корректный email</div>
             </div>
 
-            <div class="mb-5">
+            <div class="mb-3">
                 <label for="inputPassword" class="sr-only">Пароль</label>
-                <input type="password" id="inputPassword" name="psw" class="form-control mb-2" placeholder="Пароль" required="">
+                <input type="password" id="inputPassword" name="psw" class="form-control" placeholder="Пароль" required="">
                 <div class="invalid-feedback">Введите пароль</div>
             </div>
 
-            <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Войти</button>
-
-            <div class="text-center flash-login-center">
+            <div class="mb-2">
                 {% for msg in get_flashed_messages() %}
                 <h3 class="flash-message">{{msg}}</h3>
                 {% endfor %}
             </div>
+
+            <button class="btn btn-block btn-lg btn-primary mb-2" type="submit">Войти</button>
 
             <p class="text-center">Ещё нет аккаунта? <a href="/register">Зарегестрируйтесь!</a> </p>
         </div>
