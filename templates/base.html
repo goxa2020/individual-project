@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ru">
     <head>
-        {% block head%}
+        {% block head %}
 
         {% if title %}
         <title>ПРОЕКТ - {{title}}</title>
@@ -24,7 +24,6 @@
         {% endblock%}
     </head>
     <body class="d-flex flex-column h-100">
-    {% block content -%}
         <nav class="navbar navbar-fixed-top navbar-expand-md navbar-dark bg-dark mb-3" aria-label="Navbar">
             <div class="container-fluid">
                 <a class="navbar-brand" href="/">ПРОЕКТ</a>
@@ -38,29 +37,33 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav ms-auto">
-                    {% if user %}
+                        {% if user %}
                         <li class="nav-item dropdown">
                             <div class="btn-group">
                                 <button class="btn btn-dark">
                                     <a class="nav-link" href="/{{ user }}" role="button"><i class="fa-solid fa-user"></i> {{ user }}</a>
                                 </button>
-                                <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <button type="button" class="btn btn-dark dropdown-toggle dropdown-toggle-split" id="userDropdown"
+                                        role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                     <span class="visually-hidden">Toggle Dropdown</span>
                                 </button>
-                                <ul class="dropdown-menu dropdown-menu-dark" role="menu">
-                                    <li role="menuitem"><a class="dropdown-item" href="/log_out" methods="post">Выйти из аккаунта</a></li>
+                                <ul class="dropdown-menu dropdown-menu-dark dropdown-menu-end" role="menu">
+                                    <li role="menuitem"><a class="dropdown-item" href="/log_out" methods="POST">Выйти из аккаунта</a></li>
                                 </ul>
                             </div>
                         </li>
-                    {% else %}
+                        {% else %}
                         <li class="nav-item"><a class="nav-link" href="/login">Войти</a></li>
-                    {% endif %}
+                        {% endif %}
                     </ul>
                 </div>
             </div>
         </nav>
-        {% endblock -%}
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-    <script src="https://kit.fontawesome.com/f303c4193a.js" crossorigin="anonymous"></script>
+        <main>
+            {% block content -%}
+            {% endblock -%}
+        </main>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/f303c4193a.js" crossorigin="anonymous"></script>
     </body>
 </html>

@@ -65,7 +65,7 @@ def about():
 @app.route('/<profile_page>')
 def profile(profile_page):
     user = session.get('userLogged')
-    if profile_page in ['goxa', '555', 'qwerty'] or user == profile_page:
+    if profile_page in ['goxa', 'goxa@com', '555', 'qwerty'] or user == profile_page:
         return render_template('profile.html', profile_page=profile_page, user=user, title=profile_page)
     return abort(404, profile_page)
 

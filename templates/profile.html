@@ -6,7 +6,7 @@
         <br>
         {% if profile_page == user %}
         <form action="{{ url_for('log_out')}}" method="post">
-            <button type="submit">Выйти</button>
+            <button class="btn btn-secondary" type="submit">Выйти</button>
         </form>
         {% endif %}
     </div>
